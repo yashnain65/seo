@@ -36,7 +36,7 @@
                     <input type="text" id="kwInput" placeholder="Enter a topic (e.g. iPhone 15)" 
                            class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
                     <button onclick="generateKeywords()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 font-medium">
-                        Fetch
+                        Create
                     </button>
                 </div>
                 <div id="kwLoader" class="hidden mt-4 text-center text-indigo-600">Searching...</div>
@@ -71,7 +71,10 @@
             const query = document.getElementById('kwInput').value;
             const resDiv = document.getElementById('kwResult');
             const loader = document.getElementById('kwLoader');
-            
+
+            const API_KEY = "AIzaSyBTDiGdcteIONwA2-U3A5H0d0cXIstWF40"; 
+    
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
             if(!query) return alert("Please enter a keyword");
 
             loader.classList.remove('hidden');
