@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro SEO Tools | Keyword & Title Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .tool-card { transition: all 0.3s ease; }
+        .tool-card:hover { transform: translateY(-5px); shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        body { background: #f8fafc; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <nav class="bg-indigo-600 p-4 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-search-dollar"></i> SEO-Pro Tools
+            </h1>
+            <p class="text-sm opacity-80">100% Free SEO Toolkit</p>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-10">
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <div class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-3 mb-4 text-indigo-600">
+                    <i class="fas fa-keyboard text-2xl"></i>
+                    <h2 class="text-xl font-bold text-gray-800">Keyword Generator</h2>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Google suggest se trending keywords nikaalein.</p>
+                <div class="flex gap-2">
+                    <input type="text" id="kwInput" placeholder="Enter a topic (e.g. iPhone 15)" 
+                           class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    <button onclick="generateKeywords()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 font-medium">
+                        Fetch
+                    </button>
+                </div>
+                <div id="kwLoader" class="hidden mt-4 text-center text-indigo-600">Searching...</div>
+                <div id="kwResult" class="mt-6 flex flex-wrap gap-2">
+                    </div>
+            </div>
+
+            <div class="tool-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex items-center gap-3 mb-4 text-rose-500">
+                    <i class="fas fa-magic text-2xl"></i>
+                    <h2 class="text-xl font-bold text-gray-800">AI Title Generator</h2>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Apne keyword ke liye catchy titles banayein.</p>
+                <div class="flex gap-2">
+                    <input type="text" id="titleInput" placeholder="Enter keyword..." 
+                           class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-rose-500 outline-none">
+                    <button onclick="generateTitles()" class="bg-rose-500 text-white px-6 py-3 rounded-lg hover:bg-rose-600 font-medium">
+                        Create
+                    </button>
+                </div>
+                <div id="titleLoader" class="hidden mt-4 text-center text-rose-500">Writing...</div>
+                <ul id="titleResult" class="mt-6 space-y-3">
+                    </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // 1. Keyword Generator Logic (Using Google Suggest API)
+        async function generateKeywords() {
+            const query = document.getElementById('kwInput').value;
+            const resDiv = document.getElementById('kwResult');
+            const loader = document.getElementById('kwLoader');
+            
+            if(!query) return alert("Please enter a keyword");
+
+            loader.classList.remove('hidden');
+            resDiv.innerHTML = '';
+
+            try {
+                const url = `https://suggestqueries.google.com/complete/search?client=firefox&q=${encodeURIComponent(query)}`;
+                const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+                const data = await response.json();
+                const suggestions = JSON.parse(data.contents)[1];
+
+                loader.classList.add('hidden');
+                
+                if(suggestions.length === 0) {
+                    resDiv.innerHTML = "<p class='text-gray-400'>No keywords found.</p>";
+                    return;
+                }
+
+                suggestions.forEach(kw => {
+                    const span = document.createElement('span');
+                    span.className = "bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm border border-indigo-100 cursor-pointer hover:bg-indigo-100";
+                    span.innerText = kw;
+                    span.onclick = () => navigator.clipboard.writeText(kw).then(() => alert('Copied!'));
+                    resDiv.appendChild(span);
+                });
+            } catch (error) {
+                alert("Error fetching keywords!");
+                loader.classList.add('hidden');
+            }
+        }
+
+        // 2. Title Generator Logic (Creative Template Logic)
+        // Note: Asli AI ke liye aapko Gemini/OpenAI API key chahiye hogi.
+        // Ye logic professional click-worthy templates generate karta hai.
+        function generateTitles() {
+            const kw = document.getElementById('titleInput').value;
+            const resUl = document.getElementById('titleResult');
+            
+            if(!kw) return alert("Please enter a keyword");
+
+            resUl.innerHTML = '';
+            
+            const templates = [
+                `How to Master ${kw} in 2024`,
+                `10 Secrets About ${kw} Nobody Tells You`,
+                `The Ultimate Guide to ${kw} for Beginners`,
+                `Why ${kw} is the Best Way to Grow Today`,
+                `${kw} Explained: Everything You Need to Know`,
+                `Stop Making These Mistakes with ${kw}`
+            ];
+
+            templates.forEach(title => {
+                const li = document.createElement('li');
+                li.className = "p-3 bg-gray-50 rounded-lg text-gray-700 border-l-4 border-rose-500 flex justify-between items-center";
+                li.innerHTML = `<span>${title}</span> <i class="far fa-copy cursor-pointer text-gray-400 hover:text-rose-500" onclick="copyText('${title}')"></i>`;
+                resUl.appendChild(li);
+            });
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert("Title copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
