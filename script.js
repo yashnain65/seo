@@ -141,3 +141,17 @@ function generateDescriptions() {
     });
     resultDiv.innerHTML = html;
 }
+
+// script.js mein add karein
+function exportToCSV(data, filename) {
+    let csvContent = "data:text/csv;charset=utf-8,";
+    data.forEach(row => {
+        csvContent += row + "\n";
+    });
+    let encodedUri = encodeURI(csvContent);
+    let link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+}
