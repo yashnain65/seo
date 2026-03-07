@@ -1,3 +1,6 @@
+/* ============================================
+   PROFESSIONAL CSS - COMPLETE VERSION
+   ============================================ */
 
 * {
     margin: 0;
@@ -337,41 +340,6 @@ ul {
     opacity: 0.9;
 }
 
-.hero-visual {
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    display: none;
-}
-
-.floating-card {
-    background: var(--white);
-    padding: 20px 30px;
-    border-radius: 16px;
-    margin: 20px 0;
-    box-shadow: var(--shadow-xl);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    animation: float 3s ease-in-out infinite;
-}
-
-.floating-card i {
-    font-size: 1.5rem;
-    color: var(--primary);
-}
-
-.floating-card span {
-    color: var(--text);
-    font-weight: 600;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
 /* ============================================
    TOOLS SECTION
    ============================================ */
@@ -504,3 +472,40 @@ ul {
 }
 
 /* ============================================
+   FEATURES SECTION
+   ============================================ */
+
+.features-section {
+    padding: 100px 24px;
+    background: var(--light);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.25rem;
