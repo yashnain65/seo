@@ -29,15 +29,12 @@ function login() {
     const password = document.getElementById('loginPassword').value;
 
     if (email && password) {
-        // Save user data to localStorage
         const userData = {
             email: email,
             name: email.split('@')[0],
             loginTime: new Date().toISOString()
         };
         localStorage.setItem('currentUser', JSON.stringify(userData));
-        
-        // Close modal and update UI
         closeModal('loginModal');
         checkLoginStatus();
         alert('Login Successful! Welcome back!');
@@ -53,15 +50,12 @@ function signup() {
     const password = document.getElementById('signupPassword').value;
 
     if (name && email && password) {
-        // Save user data to localStorage
         const userData = {
             email: email,
             name: name,
             loginTime: new Date().toISOString()
         };
         localStorage.setItem('currentUser', JSON.stringify(userData));
-        
-        // Close modal and update UI
         closeModal('signupModal');
         checkLoginStatus();
         alert('Account Created Successfully! Welcome!');
@@ -131,30 +125,30 @@ function updateDashboard() {
 
 // Tab Switching
 function openTab(tabName) {
-    // Hide all tabs
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+        alert('Please login to use tools!');
+        showLogin();
+        return;
+    }
+
     const tabs = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => {
         tab.classList.remove('active');
         tab.style.display = 'none';
     });
 
-    // Show selected tab
     const selectedTab = document.getElementById(tabName);
     if (selectedTab) {
         selectedTab.classList.add('active');
         selectedTab.style.display = 'block';
     }
 
-    // Scroll to tools section smoothly
     const toolsSection = document.getElementById('toolsContent');
     if (toolsSection) {
         toolsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-
-    // Update active button state
-    const buttons = document.querySelectorAll('.tool-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
 }
 
 // Generate Keywords
@@ -410,23 +404,5 @@ function toggleMenu() {
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
         event.target.style.display = 'none';
-    }
-}
-
-// ============================================
-// SAVE RESULT TO DASHBOARD
-// ============================================
-
-function saveResult(type, content) {
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-        let savedResults = JSON.parse(localStorage.getItem('savedResults') || '[]');
-        savedResults.push({
-            type: type,
-            content: content,
-            date: new Date().toISOString()
-        });
-        localStorage.setItem('savedResults', JSON.stringify(savedResults));
-        updateDashboard();
     }
 }
