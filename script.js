@@ -116,3 +116,13 @@ function copyText(text) {
         alert("Copied to clipboard!");
     });
 }
+
+// script.js mein ye add karein
+async function fetchRealKeywords(keyword) {
+    const apiKey = 'AIzaSyBTDiGdcteIONwA2-U3A5H0d0cXIstWF40';
+    const url = `https://www.googleapis.com/youtube/v3/relatedVideos?part=snippet&relatedToVideoId=VIDEO_ID&type=video&key=${apiKey}`;
+    
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.items;
+}
