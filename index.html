@@ -3,24 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube SEO Master Tools</title>
+    <title>YouTube SEO Master - Free Tools</title>
+    <meta name="description" content="Free YouTube SEO Tools - Keyword Research, Title Generator, Tag Generator">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>🚀 YouTube SEO Master</h1>
-            <p>Free Tools for Creators</p>
-        </header>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-youtube"></i>
+                <span>SEO Master</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-        <nav class="tabs">
-            <button class="tab-btn active" onclick="openTab('keywords')">Keyword Research</button>
-            <button class="tab-btn" onclick="openTab('titles')">Title Generator</button>
-            <button class="tab-btn" onclick="openTab('tags')">Tag Generator</button>
-        </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>🚀 YouTube SEO Master Tools</h1>
+            <p>Free & Powerful Tools for YouTube Creators</p>
+            <div class="hero-buttons">
+                <a href="#tools" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>3+</h3>
+                    <p>Free Tools</p>
+                </div>
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Free Forever</p>
+                </div>
+                <div class="stat">
+                    <h3>∞</h3>
+                    <p>Unlimited Use</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fab fa-youtube hero-icon"></i>
+        </div>
+    </section>
 
+    <!-- Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <h2 class="section-title">🛠️ Our Tools</h2>
+            <p class="section-subtitle">All-in-One YouTube SEO Solution</p>
+            
+            <div class="tools-grid">
+                <!-- Tool 1 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Keyword Research</h3>
+                    <p>Find trending keywords for your videos</p>
+                    <button class="tool-btn" onclick="openTab('keywords')">Use Now</button>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-heading"></i>
+                    </div>
+                    <h3>Title Generator</h3>
+                    <p>Create viral-worthy video titles</p>
+                    <button class="tool-btn" onclick="openTab('titles')">Use Now</button>
+                </div>
+
+                <!-- Tool 3 -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Tag Generator</h3>
+                    <p>Generate optimized video tags</p>
+                    <button class="tool-btn" onclick="openTab('tags')">Use Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">✨ Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast & Easy</h3>
+                    <p>No signup required, instant results</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>100% Secure</h3>
+                    <p>Your data stays private</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works on all devices</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-globe"></i>
+                    <h3>Free Forever</h3>
+                    <p>No hidden charges</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">📋 How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Enter Keyword</h3>
+                    <p>Type your main keyword</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Generate</h3>
+                    <p>Click generate button</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Copy & Use</h3>
+                    <p>Copy results to YouTube</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Content (Same as before) -->
+    <div class="container tools-container">
         <div class="content-box">
             <div id="keywords" class="tab-content active">
                 <h2>YouTube Keyword Research</h2>
@@ -44,6 +177,38 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YouTube SEO Master</h3>
+                    <p>Free tools for YouTube creators worldwide</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 YouTube SEO Master. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
