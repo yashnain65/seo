@@ -1,18 +1,136 @@
 // ============================================
-// TAB SWITCHING FUNCTION (FIXED)
+// USER AUTHENTICATION SYSTEM
 // ============================================
 
-function openTab(tabName) {
-    // Check if user is logged in (Optional - remove if you want public access)
-    const currentUser = localStorage.getItem('currentUser');
-    
-    // If you want login required, uncomment below:
-    // if (!currentUser) {
-    //     alert('Please login to use tools!');
-    //     showLogin();
-    //     return;
-    // }
+// Check if user is logged in on page load
+window.addEventListener('DOMContentLoaded', () => {
+    checkLoginStatus();
+    loadDarkMode();
+});
 
+// Show Login Modal
+function showLogin() {
+    document.getElementById('loginModal').style.display = 'flex';
+}
+
+// Show Signup Modal
+function showSignup() {
+    document.getElementById('signupModal').style.display = 'flex';
+}
+
+// Close Modal
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+// Login Function
+function login() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    if (email && password) {
+        // Save user data to localStorage
+        const userData = {
+            email: email,
+            name: email.split('@')[0],
+            loginTime: new Date().toISOString()
+        };
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+        
+        // Close modal and update UI
+        closeModal('loginModal');
+        checkLoginStatus();
+        alert('Login Successful! Welcome back!');
+    } else {
+        alert('Please enter email and password');
+    }
+}
+
+// Signup Function
+function signup() {
+    const name = document.getElementById('signupName').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+
+    if (name && email && password) {
+        // Save user data to localStorage
+        const userData = {
+            email: email,
+            name: name,
+            loginTime: new Date().toISOString()
+        };
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+        
+        // Close modal and update UI
+        closeModal('signupModal');
+        checkLoginStatus();
+        alert('Account Created Successfully! Welcome!');
+    } else {
+        alert('Please fill all fields');
+    }
+}
+
+// Check Login Status
+function checkLoginStatus() {
+    const currentUser = localStorage.getItem('currentUser');
+    const userProfile = document.getElementById('userProfile');
+    const loginBtn = document.querySelector('.login-btn');
+    const signupBtn = document.querySelector('.signup-btn');
+    const userName = document.getElementById('userName');
+
+    if (currentUser) {
+        const user = JSON.parse(currentUser);
+        userProfile.style.display = 'flex';
+        loginBtn.style.display = 'none';
+        signupBtn.style.display = 'none';
+        userName.textContent = user.name;
+        updateDashboard();
+    } else {
+        userProfile.style.display = 'none';
+        loginBtn.style.display = 'block';
+        signupBtn.style.display = 'block';
+    }
+}
+
+// Logout Function
+function logout() {
+    localStorage.removeItem('currentUser');
+    checkLoginStatus();
+    alert('Logged out successfully!');
+}
+
+// Show Dashboard
+function showDashboard() {
+    const dashboard = document.getElementById('userDashboard');
+    const toolsContent = document.getElementById('toolsContent');
+    
+    dashboard.style.display = 'block';
+    toolsContent.style.display = 'none';
+    updateDashboard();
+    window.scrollTo(0, 0);
+}
+
+// Update Dashboard Stats
+function updateDashboard() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        const user = JSON.parse(currentUser);
+        const toolsUsed = localStorage.getItem('toolsUsed') || 0;
+        const savedResults = localStorage.getItem('savedResults') || 0;
+        const memberSince = new Date(user.loginTime).toLocaleDateString();
+
+        document.getElementById('toolsUsed').textContent = toolsUsed;
+        document.getElementById('savedResults').textContent = savedResults;
+        document.getElementById('memberSince').textContent = memberSince;
+    }
+}
+
+// ============================================
+// TOOL GENERATION FUNCTIONS
+// ============================================
+
+// Tab Switching
+function openTab(tabName) {
     // Hide all tabs
     const tabs = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => {
@@ -38,10 +156,6 @@ function openTab(tabName) {
     buttons.forEach(btn => btn.classList.remove('active'));
     event.currentTarget.classList.add('active');
 }
-
-// ============================================
-// TOOL GENERATION FUNCTIONS
-// ============================================
 
 // Generate Keywords
 function generateKeywords() {
@@ -233,10 +347,6 @@ Buy Me a Coffee: buymeacoffee.com/yourchannel
     saveToolUsage('descriptions');
 }
 
-// ============================================
-// UTILITY FUNCTIONS
-// ============================================
-
 // Save Tool Usage
 function saveToolUsage(toolName) {
     const currentUser = localStorage.getItem('currentUser');
@@ -258,113 +368,7 @@ function copyText(text) {
 }
 
 // ============================================
-// USER AUTHENTICATION
-// ============================================
-
-function showLogin() {
-    document.getElementById('loginModal').style.display = 'flex';
-}
-
-function showSignup() {
-    document.getElementById('signupModal').style.display = 'flex';
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-}
-
-function login() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    if (email && password) {
-        const userData = {
-            email: email,
-            name: email.split('@')[0],
-            loginTime: new Date().toISOString()
-        };
-        localStorage.setItem('currentUser', JSON.stringify(userData));
-        closeModal('loginModal');
-        checkLoginStatus();
-        alert('Login Successful! Welcome back!');
-    } else {
-        alert('Please enter email and password');
-    }
-}
-
-function signup() {
-    const name = document.getElementById('signupName').value;
-    const email = document.getElementById('signupEmail').value;
-    const password = document.getElementById('signupPassword').value;
-
-    if (name && email && password) {
-        const userData = {
-            email: email,
-            name: name,
-            loginTime: new Date().toISOString()
-        };
-        localStorage.setItem('currentUser', JSON.stringify(userData));
-        closeModal('signupModal');
-        checkLoginStatus();
-        alert('Account Created Successfully! Welcome!');
-    } else {
-        alert('Please fill all fields');
-    }
-}
-
-function checkLoginStatus() {
-    const currentUser = localStorage.getItem('currentUser');
-    const userProfile = document.getElementById('userProfile');
-    const loginBtn = document.querySelector('.login-btn');
-    const signupBtn = document.querySelector('.signup-btn');
-    const userName = document.getElementById('userName');
-
-    if (currentUser) {
-        const user = JSON.parse(currentUser);
-        userProfile.style.display = 'flex';
-        loginBtn.style.display = 'none';
-        signupBtn.style.display = 'none';
-        userName.textContent = user.name;
-        updateDashboard();
-    } else {
-        userProfile.style.display = 'none';
-        loginBtn.style.display = 'block';
-        signupBtn.style.display = 'block';
-    }
-}
-
-function logout() {
-    localStorage.removeItem('currentUser');
-    checkLoginStatus();
-    alert('Logged out successfully!');
-}
-
-function showDashboard() {
-    const dashboard = document.getElementById('userDashboard');
-    const toolsContent = document.getElementById('toolsContent');
-    
-    dashboard.style.display = 'block';
-    toolsContent.style.display = 'none';
-    updateDashboard();
-    window.scrollTo(0, 0);
-}
-
-function updateDashboard() {
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-        const user = JSON.parse(currentUser);
-        const toolsUsed = localStorage.getItem('toolsUsed') || 0;
-        const savedResults = localStorage.getItem('savedResults') || 0;
-        const memberSince = new Date(user.loginTime).toLocaleDateString();
-
-        document.getElementById('toolsUsed').textContent = toolsUsed;
-        document.getElementById('savedResults').textContent = savedResults;
-        document.getElementById('memberSince').textContent = memberSince;
-    }
-}
-
-// ============================================
-// DARK MODE
+// DARK MODE TOGGLE
 // ============================================
 
 function toggleDarkMode() {
@@ -394,7 +398,7 @@ function updateDarkModeIcon() {
 }
 
 // ============================================
-// MOBILE MENU
+// MOBILE MENU TOGGLE
 // ============================================
 
 function toggleMenu() {
@@ -410,10 +414,19 @@ window.onclick = function(event) {
 }
 
 // ============================================
-// PAGE LOAD
+// SAVE RESULT TO DASHBOARD
 // ============================================
 
-window.addEventListener('DOMContentLoaded', () => {
-    checkLoginStatus();
-    loadDarkMode();
-});
+function saveResult(type, content) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        let savedResults = JSON.parse(localStorage.getItem('savedResults') || '[]');
+        savedResults.push({
+            type: type,
+            content: content,
+            date: new Date().toISOString()
+        });
+        localStorage.setItem('savedResults', JSON.stringify(savedResults));
+        updateDashboard();
+    }
+}
