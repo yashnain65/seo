@@ -116,4 +116,3 @@ function copyText(text) {
         alert("Copied to clipboard!");
     });
 }
-
