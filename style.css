@@ -8,6 +8,7 @@
 body {
     background-color: #f0f2f5;
     color: #333;
+    min-height: 100vh;
 }
 
 .container {
@@ -34,6 +35,7 @@ header h1 {
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .tab-btn {
