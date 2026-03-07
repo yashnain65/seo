@@ -364,3 +364,28 @@ function exportToCSV(data, filename) {
     document.body.appendChild(link);
     link.click();
 }
+// Dark Mode Toggle Function
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    
+    // Save preference
+    let isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    
+    // Update icon
+    let icon = document.querySelector('.dark-mode-toggle i');
+    if (isDark) {
+        icon.textContent = '☀️';
+    } else {
+        icon.textContent = '🌙';
+    }
+}
+
+// Load Dark Mode Preference on Page Load
+window.addEventListener('DOMContentLoaded', () => {
+    let savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'true') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.dark-mode-toggle i').textContent = '☀️';
+    }
+});
