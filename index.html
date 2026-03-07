@@ -1,94 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Free SEO Tools</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube SEO Master Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header class="header">
+    <div class="container">
+        <header>
+            <h1>🚀 YouTube SEO Master</h1>
+            <p>Free Tools for Creators</p>
+        </header>
 
-<div class="logo">SEO Tools</div>
+        <nav class="tabs">
+            <button class="tab-btn active" onclick="openTab('keywords')">Keyword Research</button>
+            <button class="tab-btn" onclick="openTab('titles')">Title Generator</button>
+            <button class="tab-btn" onclick="openTab('tags')">Tag Generator</button>
+        </nav>
 
-<nav>
-<a href="#">Home</a>
-<a href="#">Tools</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
+        <div class="content-box">
+            <!-- Keyword Research Section -->
+            <div id="keywords" class="tab-content active">
+                <h2>YouTube Keyword Research</h2>
+                <input type="text" id="keywordInput" placeholder="Enter a seed keyword (e.g., Cooking)">
+                <button onclick="generateKeywords()">Search Keywords</button>
+                <div id="keywordResult" class="result-box"></div>
+            </div>
 
-</header>
+            <!-- Title Generator Section -->
+            <div id="titles" class="tab-content">
+                <h2>YouTube Title Generator</h2>
+                <input type="text" id="titleInput" placeholder="Enter your topic (e.g., iPhone 15 Review)">
+                <button onclick="generateTitles()">Generate Titles</button>
+                <div id="titleResult" class="result-box"></div>
+            </div>
 
+            <!-- Tag Generator Section -->
+            <div id="tags" class="tab-content">
+                <h2>YouTube Tag Generator</h2>
+                <input type="text" id="tagInput" placeholder="Enter main keyword (e.g., Gaming)">
+                <button onclick="generateTags()">Generate Tags</button>
+                <div id="tagResult" class="result-box"></div>
+            </div>
+        </div>
+    </div>
 
-<section class="hero">
-
-<h1>Free SEO Tools</h1>
-
-<p>Boost your website ranking with our powerful SEO tools.</p>
-
-<a href="#" class="btn">Explore Tools</a>
-
-</section>
-
-
-<section class="tools">
-
-<h2>Popular SEO Tools</h2>
-
-<div class="tools-grid">
-
-<div class="tool-card">
-<h3>Word Counter</h3>
-<p>Count words and characters instantly.</p>
-<a href="#">Use Tool</a>
-</div>
-
-<div class="tool-card">
-<h3>Meta Tag Generator</h3>
-<p>Create SEO meta tags easily.</p>
-<a href="#">Use Tool</a>
-</div>
-
-<div class="tool-card">
-<h3>Keyword Density</h3>
-<p>Check keyword density for SEO.</p>
-<a href="#">Use Tool</a>
-</div>
-
-<div class="tool-card">
-<h3>Robots.txt Generator</h3>
-<p>Create robots.txt file for search engines.</p>
-<a href="#">Use Tool</a>
-</div>
-
-<div class="tool-card">
-<h3>Sitemap Generator</h3>
-<p>Create sitemap.xml easily.</p>
-<a href="#">Use Tool</a>
-</div>
-
-<div class="tool-card">
-<h3>Open Graph Generator</h3>
-<p>Generate social media meta tags.</p>
-<a href="#">Use Tool</a>
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<p>© 2026 SEO Tools - All Rights Reserved</p>
-
-</footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
