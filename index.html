@@ -3,103 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube SEO Tools - Free</title>
+    <title>YouTube SEO Tools - Professional Creator Tools</title>
+    <meta name="description" content="Free YouTube SEO Tools - Keyword Research, Title Generator, Tag Generator">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <h1>🚀 YouTube SEO Tools</h1>
-            <p>Free Tools for YouTube Creators</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-youtube"></i>
+                <span>SEO Master</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            
+            <!-- User Authentication Section -->
+            <div class="auth-section">
+                <button class="login-btn" onclick="showLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="signup-btn" onclick="showSignup()">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+                <div id="userProfile" class="user-profile" style="display: none;">
+                    <span id="userName">User</span>
+                    <button class="dashboard-btn" onclick="showDashboard()">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </button>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Container -->
-    <div class="container">
-        
-        <!-- Tools Navigation -->
-        <nav class="tabs">
-            <button class="tab-btn active" onclick="openTab('keywords')">
-                <i class="fas fa-search"></i> Keyword Research
-            </button>
-            <button class="tab-btn" onclick="openTab('titles')">
-                <i class="fas fa-heading"></i> Title Generator
-            </button>
-            <button class="tab-btn" onclick="openTab('tags')">
-                <i class="fas fa-tags"></i> Tag Generator
-            </button>
-            <!-- Navigation mein add karein -->
-<button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
-    <i class="fas fa-moon"></i>
-    
-</button>
-            <!-- Navigation mein add karein -->
-<div class="user-section">
-    <button class="login-btn" onclick="showLogin()">Login</button>
-    <button class="signup-btn" onclick="showSignup()">Sign Up</button>
-    <div id="userProfile" class="user-profile" style="display: none;">
-        <span id="userName">User</span>
-        <button onclick="logout()">Logout</button>
-    </div>
-</div>
-
-<!-- Login Modal -->
-<div id="loginModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('loginModal')">&times;</span>
-        <h2>Login</h2>
-        <input type="email" id="loginEmail" placeholder="Email">
-        <input type="password" id="loginPassword" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
-    </div>
-</div>
-
-<!-- Signup Modal -->
-<div id="signupModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('signupModal')">&times;</span>
-        <h2>Sign Up</h2>
-        <input type="text" id="signupName" placeholder="Full Name">
-        <input type="email" id="signupEmail" placeholder="Email">
-        <input type="password" id="signupPassword" placeholder="Password">
-        <button onclick="signup()">Sign Up</button>
-        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
-    </div>
-</div>
-
-<!-- User Dashboard -->
-<div id="userDashboard" class="dashboard" style="display: none;">
-    <div class="container">
-        <h2>👤 My Dashboard</h2>
-        <div class="dashboard-stats">
-            <div class="stat-card">
-                <h3>📊 Tools Used</h3>
-                <p id="toolsUsed">0</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🚀 #1 Free YouTube SEO Tool</span>
             </div>
-            <div class="stat-card">
-                <h3>💾 Saved Results</h3>
-                <p id="savedResults">0</p>
+            <h1>Boost Your YouTube <br><span class="highlight">SEO Performance</span></h1>
+            <p>Free professional tools to help you rank higher, get more views, and grow your channel faster.</p>
+            <div class="hero-buttons">
+                <a href="#tools" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Start Free
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </a>
             </div>
-            <div class="stat-card">
-                <h3>📅 Member Since</h3>
-                <p id="memberSince">-</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Users</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50,000+</h3>
+                    <p>Tools Used</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Free</p>
+                </div>
             </div>
         </div>
-        <div class="saved-results">
-            <h3>📌 Saved Results</h3>
-            <div id="savedResultsList"></div>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <i class="fas fa-search"></i>
+                <span>Keyword Research</span>
+            </div>
+            <div class="floating-card card-2">
+                <i class="fas fa-heading"></i>
+                <span>Title Generator</span>
+            </div>
+            <div class="floating-card card-3">
+                <i class="fas fa-tags"></i>
+                <span>Tag Generator</span>
+            </div>
         </div>
-    </div>
-</div>
-        </nav>
+    </section>
 
-        <!-- Tool Sections -->
+    <!-- Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Tools</span>
+                <h2>Everything You Need to Rank</h2>
+                <p>Professional SEO tools designed for YouTube creators</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Keyword Research</h3>
+                    <p>Find trending keywords with high search volume and low competition</p>
+                    <button class="tool-btn" onclick="openTab('keywords')">Use Tool <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-heading"></i>
+                    </div>
+                    <h3>Title Generator</h3>
+                    <p>Create viral-worthy titles that get clicks and improve CTR</p>
+                    <button class="tool-btn" onclick="openTab('titles')">Use Tool <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Tag Generator</h3>
+                    <p>Generate optimized tags to improve your video discoverability</p>
+                    <button class="tool-btn" onclick="openTab('tags')">Use Tool <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Description Generator</h3>
+                    <p>Create professional video descriptions with hashtags</p>
+                    <button class="tool-btn" onclick="openTab('descriptions')">Use Tool <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose Us</span>
+                <h2>Features That Matter</h2>
+                <p>Everything you need to succeed on YouTube</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Get instant results without any waiting time</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>100% Secure</h3>
+                    <p>Your data is private and never stored</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Free Forever</h3>
+                    <p>No hidden charges or subscriptions</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Get help whenever you need it</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Regular Updates</h3>
+                    <p>New features added regularly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Content (Protected After Login) -->
+    <div id="toolsContent" class="container tools-container">
         <div class="content-box">
-            <!-- Keyword Research -->
             <div id="keywords" class="tab-content active">
                 <h2>🔍 YouTube Keyword Research</h2>
                 <input type="text" id="keywordInput" placeholder="Enter a seed keyword (e.g., Cooking)">
@@ -107,7 +218,6 @@
                 <div id="keywordResult" class="result-box"></div>
             </div>
 
-            <!-- Title Generator -->
             <div id="titles" class="tab-content">
                 <h2>📝 YouTube Title Generator</h2>
                 <input type="text" id="titleInput" placeholder="Enter your topic (e.g., iPhone 15 Review)">
@@ -115,38 +225,171 @@
                 <div id="titleResult" class="result-box"></div>
             </div>
 
-            <!-- Tag Generator -->
             <div id="tags" class="tab-content">
                 <h2>🏷️ YouTube Tag Generator</h2>
                 <input type="text" id="tagInput" placeholder="Enter main keyword (e.g., Gaming)">
                 <button onclick="generateTags()">Generate Tags</button>
                 <div id="tagResult" class="result-box"></div>
             </div>
-        </div>
 
-        <!-- Tools Content Section mein add karein -->
-<div id="descriptions" class="tab-content">
-    <h2>📄 YouTube Description Generator</h2>
-    <input type="text" id="descInput" placeholder="Enter your video topic (e.g., Cooking Tutorial)">
-    <button onclick="generateDescriptions()">Generate Description</button>
-    <div id="descResult" class="result-box"></div>
-</div>
-        <!-- Info Section -->
-        <div class="info-section">
-            <h3>✨ How to Use</h3>
-            <ul>
-                <li>1️⃣ Enter your keyword or topic</li>
-                <li>2️⃣ Click on Generate button</li>
-                <li>3️⃣ Copy the results and use on YouTube</li>
-            </ul>
+            <div id="descriptions" class="tab-content">
+                <h2>📄 YouTube Description Generator</h2>
+                <input type="text" id="descInput" placeholder="Enter your video topic (e.g., Cooking Tutorial)">
+                <button onclick="generateDescriptions()">Generate Description</button>
+                <div id="descResult" class="result-box"></div>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 YouTube SEO Tools | Free Forever</p>
-    </footer>
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Pricing</span>
+                <h2>Simple & Transparent Pricing</h2>
+                <p>Choose the plan that works for you</p>
+            </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">$0</div>
+                        <p>Forever</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited Tools</li>
+                        <li><i class="fas fa-check"></i> 100 Requests/Day</li>
+                        <li><i class="fas fa-check"></i> Basic Support</li>
+                        <li><i class="fas fa-check"></i> No Credit Card</li>
+                    </ul>
+                    <button class="pricing-btn">Get Started</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">$9</div>
+                        <p>Per Month</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All Free Features</li>
+                        <li><i class="fas fa-check"></i> Unlimited Requests</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> API Access</li>
+                    </ul>
+                    <button class="pricing-btn">Upgrade Now</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Business</h3>
+                        <div class="price">$29</div>
+                        <p>Per Month</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> All Pro Features</li>
+                        <li><i class="fas fa-check"></i> Team Access</li>
+                        <li><i class="fas fa-check"></i> Custom API</li>
+                        <li><i class="fas fa-check"></i> Dedicated Support</li>
+                    </ul>
+                    <button class="pricing-btn">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Dashboard (Protected) -->
+    <div id="userDashboard" class="dashboard" style="display: none;">
+        <div class="container">
+            <h2>👤 My Dashboard</h2>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>📊 Tools Used</h3>
+                    <p id="toolsUsed">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>💾 Saved Results</h3>
+                    <p id="savedResults">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>📅 Member Since</h3>
+                    <p id="memberSince">-</p>
+                </div>
+            </div>
+            <div class="saved-results">
+                <h3>📌 Saved Results</h3>
+                <div id="savedResultsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fab fa-youtube"></i>
+                        <span>SEO Master</span>
+                    </div>
+                    <p>Professional YouTube SEO tools for creators worldwide. Help you rank higher and grow your channel.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="#" onclick="openTab('keywords')">Keyword Research</a></li>
+                        <li><a href="#" onclick="openTab('titles')">Title Generator</a></li>
+                        <li><a href="#" onclick="openTab('tags')">Tag Generator</a></li>
+                        <li><a href="#" onclick="openTab('descriptions')">Description Generator</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for latest updates and tips</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2024 YouTube SEO Master. All
