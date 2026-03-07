@@ -188,7 +188,25 @@ footer {
     .tabs {
         flex-direction: column;
     }
-    
+
+    /* style.css mein add karein */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .container {
+    background: #2d2d2d;
+}
+
+body.dark-mode input {
+    background: #3d3d3d;
+    color: #ffffff;
+}
+
+body.dark-mode .result-item {
+    background: #3d3d3d;
+}
     .tab-btn {
         width: 100%;
         justify-content: center;
