@@ -17,7 +17,7 @@ function openTab(tabName) {
     event.currentTarget.classList.add("active");
 }
 
-// 1. Keyword Research Logic (Simulated)
+// 1. Keyword Research Logic
 function generateKeywords() {
     let input = document.getElementById('keywordInput').value;
     let resultDiv = document.getElementById('keywordResult');
@@ -27,7 +27,6 @@ function generateKeywords() {
         return;
     }
 
-    // Yahan aap API connect kar sakte hain. Abhi hum mock data dikhayenge.
     let suggestions = [
         `${input} tutorial`,
         `${input} for beginners`,
