@@ -116,3 +116,28 @@ function copyText(text) {
         alert("Copied to clipboard!");
     });
 }
+
+// script.js mein add karein
+function generateDescriptions() {
+    let input = document.getElementById('descInput').value;
+    let resultDiv = document.getElementById('descResult');
+
+    let descriptions = [
+        `Learn about ${input} in this comprehensive guide!`,
+        `In this video, we explore ${input} and its benefits.`,
+        `Discover the secrets of ${input} with our expert tips.`,
+        `Join us as we dive deep into ${input}.`,
+        `Everything you need to know about ${input} is here!`
+    ];
+
+    let html = "";
+    descriptions.forEach(desc => {
+        html += `
+            <div class="result-item">
+                <span>${desc}</span>
+                <button class="copy-btn" onclick="copyText('${desc}')">Copy</button>
+            </div>
+        `;
+    });
+    resultDiv.innerHTML = html;
+}
