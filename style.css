@@ -806,6 +806,12 @@ ul {
     text-align: center;
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .stat-card h3 {
@@ -1126,3 +1132,51 @@ ul {
     }
 
     .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+
+    .pricing-card.featured:hover {
+        transform: translateY(-10px) scale(1);
+    }
+
+    .modal-content {
+        padding: 30px 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+}
